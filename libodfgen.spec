@@ -12,6 +12,7 @@ Group:		System/Libraries
 License:	LGPLv2+ or MPLv2.0+
 Url:		http://sourceforge.net/projects/libwpd/
 Source0:	http://downloads.sourceforge.net/libwpd/%{name}-%{version}.tar.xz
+BuildRequires:	boost-devel
 BuildRequires:	libwpd-devel
 BuildRequires:	libwpg-devel
 
