@@ -1,78 +1,58 @@
-%global apiversion 0.0
-%define fname odfgen
-%define major 0
-%define libname %mklibname %fname %major
-%define develname %mklibname -d %fname
+%define fname	odfgen
+%define api	0.0
+%define major	0
+%define libname	%mklibname %{fname} %{api} %{major}
+%define devname	%mklibname -d %{fname}
 
-Name: libodfgen
-Version: 0.0.2
-Release: %mkrel 2
-Summary: An ODF generator library
-
-Group: System/Libraries
-License: LGPLv2+ or MPLv2.0+
-URL: http://sourceforge.net/projects/libwpd/
-Source: http://downloads.sourceforge.net/libwpd/%{name}-%{version}.tar.xz
-
-BuildRequires: libwpd-devel
-BuildRequires: libwpg-devel
+Summary:	An ODF generator library
+Name:		libodfgen
+Version:	0.0.2
+Release:	1
+Group:		System/Libraries
+License:	LGPLv2+ or MPLv2.0+
+Url:		http://sourceforge.net/projects/libwpd/
+Source0:	http://downloads.sourceforge.net/libwpd/%{name}-%{version}.tar.xz
+BuildRequires:	libwpd-devel
+BuildRequires:	libwpg-devel
 
 %description
 %{name} is a library for generating ODF (text and vector drawing formats
 only). It is directly pluggable into input filters based on
 libwpd/libwpg. It is used in libreoffice, for example.
 
-%package -n %libname
-Summary: Development files for %{name}
-Group: System/Libraries
+%package -n %{libname}
+Summary:	Development files for %{name}
+Group:		System/Libraries
 
-%description  -n %libname
-The %{libname} package contains libraries for applications that use %{name}.
+%description  -n %{libname}
+This package contains libraries for applications that use %{name}.
 
-%package -n %develname
-Summary: Development files for %{name}
-Group: Development/C
-Requires: %libname = %version
-Provides: %{fname}-devel lib%{fname}-devel
+%package -n %{devname}
+Summary:	Development files for %{name}
+Group:		Development/C
+Requires:	%{libname} = %{version}-%{release}
 
-%description  -n %develname
-The %{develname} package contains libraries and header files for
+%description  -n %{devname}
+The %{devname} package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
 %setup -q
 
 %build
-%configure --disable-silent-rules --disable-static --disable-werror \
- --with-sharedptr=c++11 CXXFLAGS="$CXXFLAGS -std=c++11"
-sed -i \
-    -e 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' \
-    -e 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' \
-    libtool
-make %{?_smp_mflags}
-
+%configure2_5x \
+	--disable-static
+%make
 
 %install
-make install DESTDIR=%{buildroot}
-rm -f %{buildroot}/%{_libdir}/*.la
+%makeinstall_std
 
-%files -n %libname
-%doc COPYING.* README
-%{_libdir}/%{name}-%{apiversion}.so.%{major}*
+%files -n %{libname}
+%{_libdir}/%{name}-%{api}.so.%{major}*
 
-%files  -n %develname 
-%doc ChangeLog
-%{_includedir}/%{name}-%{apiversion}
-%{_libdir}/%{name}-%{apiversion}.so
-%{_libdir}/pkgconfig/%{name}-%{apiversion}.pc
-
-
-%changelog
-* Sat May 25 2013 tv <tv> 0.0.2-2.mga4
-+ Revision: 426967
-- add devel provides
-
-* Sat May 25 2013 tv <tv> 0.0.2-1.mga4
-+ Revision: 426956
-- imported package libodfgen
+%files  -n %{devname} 
+%doc ChangeLog COPYING.* README
+%{_includedir}/%{name}-%{api}
+%{_libdir}/%{name}-%{api}.so
+%{_libdir}/pkgconfig/%{name}-%{api}.pc
 
