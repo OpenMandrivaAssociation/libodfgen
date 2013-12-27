@@ -15,6 +15,7 @@ Source0:	http://downloads.sourceforge.net/libwpd/%{name}-%{version}.tar.xz
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(libwpd-0.9)
 BuildRequires:	pkgconfig(libwpg-0.2)
+BuildRequires:	pkgconfig(libetonyek-0.0)
 BuildRequires:	doxygen
 
 %description
