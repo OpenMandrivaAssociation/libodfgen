@@ -6,15 +6,16 @@
 
 Summary:	An ODF generator library
 Name:		libodfgen
-Version:	0.0.2
-Release:	5
+Version:	0.0.4
+Release:	1
 Group:		System/Libraries
 License:	LGPLv2+ or MPLv2.0+
 Url:		http://sourceforge.net/projects/libwpd/
 Source0:	http://downloads.sourceforge.net/libwpd/%{name}-%{version}.tar.xz
 BuildRequires:	boost-devel
-BuildRequires:	libwpd-devel
-BuildRequires:	libwpg-devel
+BuildRequires:	pkgconfig(libwpd-0.9)
+BuildRequires:	pkgconfig(libwpg-0.2)
+BuildRequires:	doxygen
 
 %description
 %{name} is a library for generating ODF (text and vector drawing formats
@@ -56,4 +57,4 @@ developing applications that use %{name}.
 %{_includedir}/%{name}-%{api}
 %{_libdir}/%{name}-%{api}.so
 %{_libdir}/pkgconfig/%{name}-%{api}.pc
-
+%doc %{_docdir}/%{name}
