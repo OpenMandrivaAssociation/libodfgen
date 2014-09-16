@@ -1,21 +1,19 @@
 %define fname	odfgen
-%define api	0.0
-%define major	0
+%define api	0.1
+%define major	1
 %define libname	%mklibname %{fname} %{api} %{major}
 %define devname	%mklibname -d %{fname}
 
 Summary:	An ODF generator library
 Name:		libodfgen
-Version:	0.0.4
-Release:	3
+Version:	0.1.1
+Release:	1
 Group:		System/Libraries
 License:	LGPLv2+ or MPLv2.0+
 Url:		http://sourceforge.net/projects/libwpd/
-Source0:	http://downloads.sourceforge.net/libwpd/%{name}-%{version}.tar.xz
+Source0:	http://downloads.sourceforge.net/libodfgen/%{name}-%{version}.tar.xz
 BuildRequires:	boost-devel
-BuildRequires:	pkgconfig(libwpd-0.9)
-BuildRequires:	pkgconfig(libwpg-0.2)
-BuildRequires:	pkgconfig(libetonyek-0.0)
+BuildRequires:	pkgconfig(librevenge-0.0)
 BuildRequires:	doxygen
 
 %description

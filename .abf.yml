@@ -1,2 +1,4 @@
+removed_sources:
+  libodfgen-0.0.4.tar.xz: 6e88d2bd527c06c972d3f90d3ba8c6ded24d683b
 sources:
-  "libodfgen-0.0.4.tar.xz": 6e88d2bd527c06c972d3f90d3ba8c6ded24d683b
+  libodfgen-0.1.1.tar.xz: 4270b1b75191304c650e69f7eceed8988d3dbb0b
