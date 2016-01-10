@@ -6,8 +6,8 @@
 
 Summary:	An ODF generator library
 Name:		libodfgen
-Version:	0.1.4
-Release:	2
+Version:	0.1.6
+Release:	1
 Group:		System/Libraries
 License:	LGPLv2+ or MPLv2.0+
 Url:		http://sourceforge.net/projects/libwpd/
