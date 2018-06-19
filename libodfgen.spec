@@ -6,12 +6,12 @@
 
 Summary:	An ODF generator library
 Name:		libodfgen
-Version:	0.1.6
-Release:	2
+Version:	0.1.7
+Release:	1
 Group:		System/Libraries
 License:	LGPLv2+ or MPLv2.0+
 Url:		http://sourceforge.net/projects/libwpd/
-Source0:	http://downloads.sourceforge.net/libodfgen/%{name}-%{version}.tar.xz
+Source0:	https://downloads.sourceforge.net/project/libwpd/libodfgen/libodfgen-%{version}/libodfgen-%{version}.tar.xz
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(librevenge-0.0)
 BuildRequires:	doxygen
@@ -41,7 +41,7 @@ developing applications that use %{name}.
 %setup -q
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static
 %make
 
