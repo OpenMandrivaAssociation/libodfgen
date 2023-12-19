@@ -1,7 +1,8 @@
 %define fname	odfgen
 %define api	0.1
 %define major	1
-%define libname	%mklibname %{fname} %{api} %{major}
+%define oldlibname	%mklibname %{fname} 0.1 1
+%define libname	%mklibname %{fname}
 %define devname	%mklibname -d %{fname}
 
 Summary:	An ODF generator library
@@ -14,6 +15,7 @@ Url:		http://sourceforge.net/projects/libwpd/
 Source0:	https://downloads.sourceforge.net/project/libwpd/libodfgen/libodfgen-%{version}/libodfgen-%{version}.tar.xz
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(librevenge-0.0)
+BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	doxygen
 
 %description
@@ -24,6 +26,7 @@ libwpd/libwpg. It is used in libreoffice, for example.
 %package -n %{libname}
 Summary:	Development files for %{name}
 Group:		System/Libraries
+%rename %{oldlibname}
 
 %description  -n %{libname}
 This package contains libraries for applications that use %{name}.
@@ -38,15 +41,15 @@ The %{devname} package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
-
-%build
+%autosetup -p1
 %configure \
 	--disable-static
-%make
+
+%build
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files -n %{libname}
 %{_libdir}/%{name}-%{api}.so.%{major}*
