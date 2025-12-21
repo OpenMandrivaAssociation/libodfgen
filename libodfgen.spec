@@ -13,6 +13,11 @@ Group:		System/Libraries
 License:	LGPLv2+ or MPLv2.0+
 Url:		https://sourceforge.net/projects/libwpd/
 Source0:	https://downloads.sourceforge.net/project/libwpd/libodfgen/libodfgen-%{version}/libodfgen-%{version}.tar.xz
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(librevenge-0.0)
 BuildRequires:	pkgconfig(libxml-2.0)
