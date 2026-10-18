@@ -1,0 +1,14 @@
+libxml2 2.15 no longer includes stdint from parser.h, so uint8_t in
+appendUnicodeTo is undeclared. Same change as openSUSE's gcc 15 patch.
+https://bugs.gentoo.org/937527
+
+--- a/src/OdfGenerator.cxx
++++ b/src/OdfGenerator.cxx
+@@ -33,6 +33,7 @@
+ #include <math.h>
+ 
+ #include <cctype>
++#include <cstdint>
+ #include <limits>
+ #include <memory>
+ #include <string>

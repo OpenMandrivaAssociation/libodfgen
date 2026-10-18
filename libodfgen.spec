@@ -13,6 +13,8 @@ Group:		System/Libraries
 License:	LGPLv2+ or MPLv2.0+
 Url:		https://sourceforge.net/projects/libwpd/
 Source0:	https://downloads.sourceforge.net/project/libwpd/libodfgen/libodfgen-%{version}/libodfgen-%{version}.tar.xz
+# parser.h from libxml2 2.15 no longer provides uint8_t
+Patch0:		libodfgen-0.1.8-cstdint.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool-base
